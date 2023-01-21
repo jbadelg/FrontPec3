@@ -1,0 +1,15 @@
+.user-thumbnail {
+  background-size: cover;
+}
+.list {
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 100vh;
+}
+.cardList {
+  height: 20vh;
+  width: 20vh;
+}
+.botones {
+  justify-content: end;
+}

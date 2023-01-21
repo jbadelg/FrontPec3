@@ -1,0 +1,39 @@
+<div class="list">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <h1 mat-subheader>Users</h1>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="botones">
+      <span class="example-spacer"></span>
+      <button (click)="selectList()">
+        <mat-icon class="example-icon">format_list_bulleted</mat-icon>
+      </button>
+      <button (click)="selectCard()">
+        <mat-icon class="example-icon">dashboard</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <app-list [item]="users" *ngIf="list"></app-list>
+  <a mat-list-item [routerLink]="['/user', users.info.seed]">
+    <app-cards
+      [item]="users"
+      [cardList]="true"
+      *ngIf="!list"
+      class="cardList"
+    ></app-cards>
+  </a>
+  <!--
+  <mat-nav-list *ngFor="let user of users.results">
+    <mat-list-item>
+      <a mat-list-item [routerLink]="['/user', users.info.seed]">
+        <img mat-list-avatar src="{{ user.picture.thumbnail }}" />
+        <h3 matLine>{{ user.gender }}</h3>
+        <p matLine>{{ user.name.first }}</p>
+      </a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-nav-list>
+  -->
+</div>

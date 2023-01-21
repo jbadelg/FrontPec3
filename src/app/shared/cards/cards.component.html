@@ -1,0 +1,97 @@
+<mat-card class="card" *ngFor="let user of item.results; let i = index">
+  <mat-card-header>
+    <img
+      *ngIf="!cardList"
+      mat-card-avatar
+      src="{{ item.results[i].picture.thumbnail }}"
+    />
+    <mat-card-title>{{ item.results[i].name.first }}</mat-card-title>
+    <mat-card-subtitle>{{ item.results[i].gender }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    *ngIf="!cardList"
+    mat-card-image
+    src="{{ item.results[i].picture.large }}"
+    alt="User Photo "
+  />
+  <img
+    *ngIf="cardList"
+    mat-card-sm-image
+    src="{{ item.results[i].picture.medium }}"
+    alt="User Photo "
+  />
+  <mat-card-content *ngIf="details">
+    <div class="example-action-buttons">
+      <button mat-button (click)="accordion.openAll()">Expand All</button>
+      <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+    </div>
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Personal data </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+          <mat-label>Name:</mat-label>
+          {{ item.results[i].name.title }} - {{ item.results[i].name.first }}
+          {{ item.results[i].name.last }}
+        </div>
+        <div>
+          <mat-label>Gender:</mat-label>
+          {{ item.results[i].gender }}
+        </div>
+        <div>
+          <mat-label>Email:</mat-label>
+          {{ item.results[i].email }}
+        </div>
+        <div>
+          <mat-label>Birthday:</mat-label>
+          {{ item.results[i].dob.date | date }}
+        </div>
+        <div>
+          <mat-label>Age:</mat-label>
+          {{ item.results[i].dob.age }}
+        </div>
+        <div>
+          <mat-label>Phone:</mat-label>
+          {{ item.results[i].phone }}
+        </div>
+        <div>
+          <mat-label>Cell:</mat-label>
+          {{ item.results[i].cell }}
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Location </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+          <mat-label>Country:</mat-label>
+          {{ item.results[i].location.country }}
+        </div>
+        <div>
+          <mat-label>City:</mat-label>
+          {{ item.results[i].location.city }}
+        </div>
+        <div>
+          <mat-label>Street:</mat-label>
+          {{ item.results[i].location.street.name }} -
+          {{ item.results[i].location.street.number }}
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+
+  <mat-card-footer
+    style="margin-left: 10px; margin-bottom: 5px"
+    *ngIf="!cardList"
+  >
+    <mat-card-actions>
+      <button *ngIf="!details" mat-button (click)="mostrarMas()">
+        <mat-icon>visibility</mat-icon> Show all details
+      </button>
+      <button *ngIf="details" mat-button (click)="mostrarMenos()">
+        <mat-icon>visibility_off</mat-icon> Hide details
+      </button>
+    </mat-card-actions>
+  </mat-card-footer>
+</mat-card>

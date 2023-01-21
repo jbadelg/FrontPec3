@@ -1,0 +1,10 @@
+<mat-nav-list *ngFor="let user of item.results">
+  <mat-list-item>
+    <a mat-list-item [routerLink]="['/user', item.info.seed]">
+      <img mat-list-avatar src="{{ user.picture.thumbnail }}" />
+      <h3 matLine>{{ user.gender }}</h3>
+      <p matLine>{{ user.name.first }}</p>
+    </a>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-nav-list>
